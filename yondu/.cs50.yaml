@@ -6,11 +6,11 @@ check50:
           20
           1000
         stdout: |
-           How many pirates:
-           How many units:
-           Yondu's share: 159.60
-           Peter's share: 127.15
-           Crew's share: 39.62
+          How many pirates:
+          How many units:
+          Yondu's share: 159.60
+          Peter's share: 127.15
+          Crew's share: 39.62
         exit: 0
     happy day 2:
       - run: python3 yondu.py
@@ -18,11 +18,11 @@ check50:
           35
           100000
         stdout: |
-           How many pirates:
-           How many units:
-           Yondu's share: 15197.23
-           Peter's share: 11770.63
-           Crew's share: 2213.10
+          How many pirates:
+          How many units:
+          Yondu's share: 15197.23
+          Peter's share: 11770.63
+          Crew's share: 2213.10
         exit: 0
     happy day 3:
       - run: python3 yondu.py
@@ -30,8 +30,8 @@ check50:
           49
           39481
         stdout: |
-           How many pirates:
-           How many units:
+          How many pirates:
+          How many units:
           Yondu's share: 5735.85
           Peter's share: 4386.49
           Crew's share: 624.65
