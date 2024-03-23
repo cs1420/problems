@@ -6,8 +6,8 @@ check50:
           20
           1000
         stdout: |
-          How many pirates: 
-          How many units: 
+          How many pirates:
+          How many units:
           
           Yondu's share: 159.60
           Peter's share: 127.15
@@ -19,8 +19,8 @@ check50:
           35
           100000
         stdout: |
-          How many pirates: 
-          How many units: 
+          How many pirates:
+          How many units:
           
           Yondu's share: 15197.23
           Peter's share: 11770.63
@@ -32,8 +32,8 @@ check50:
           49
           39481
         stdout: |
-          How many pirates: 
-          How many units: 
+          How many pirates:
+          How many units:
           
           Yondu's share: 5735.85
           Peter's share: 4386.49
