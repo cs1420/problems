@@ -10,7 +10,7 @@ check50:
            Peter's share: 127.15
            Crew's share: 39.62
         exit: 0
-      happy day 2:
+    happy day 2:
       - run: python3 yondu.py
         stdin: |
           35
@@ -20,7 +20,7 @@ check50:
            Peter's share: 11770.63
            Crew's share: 2213.10
         exit: 0
-     happy day 3:
+    happy day 3:
       - run: python3 yondu.py
         stdin: |
           49
