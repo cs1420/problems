@@ -1,0 +1,12 @@
+check50:
+  checks:
+    happy day 1:
+      - run: python3 yondu.py
+        stdin: |
+          20
+          1000
+        stdout: |
+           Yondu's share: 159.60
+           Peter's share: 127.15
+           Crew's share: 39.62
+        exit: 0
