@@ -22,8 +22,48 @@ def testif():
         analyzer = Analyzer()
         analyzer.visit(tree)
         if not analyzer.has_if():
+            raise check50.Failure("no if statement found")
+            
+@check50.check(exists)
+def testfor():
+    """check for at least one for loop """
+    with open("timmy.py") as source:
+        tree = ast.parse(source.read())
+        analyzer = Analyzer()
+        analyzer.visit(tree)
+        if not analyzer.has_for():
             raise check50.Failure("no for loop found")
 
+@check50.check(exists)
+def testwhile():
+    """check for at least one while loop"""
+    with open("timmy.py") as source:
+        tree = ast.parse(source.read())
+        analyzer = Analyzer()
+        analyzer.visit(tree)
+        if not analyzer.has_while():
+            raise check50.Failure("no while loop found")
+
+@check50.check(exists)
+def testdefs():
+    """check for at least 3 user-defined functions"""
+    with open("timmy.py") as source:
+        tree = ast.parse(source.read())
+        analyzer = Analyzer()
+        analyzer.visit(tree)
+        if not analyzer.has_while():
+            raise check50.Failure("need a least 3 function defs: one per shape")
+
+@check50.check(exists)
+def testdefs():
+    """check for at least 3 calls to user-defined functions"""
+    with open("timmy.py") as source:
+        tree = ast.parse(source.read())
+        analyzer = Analyzer()
+        analyzer.visit(tree)
+        if not analyzer.has_call():
+            raise check50.Failure("need to call your 3 user-defined functions at least once")
+            
 class Analyzer(ast.NodeVisitor):
     def __init__(self):
         self.stats = defaultdict(list)
