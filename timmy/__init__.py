@@ -10,9 +10,9 @@ def exists():
 
 @check50.check(exists)
 def test_mural_exists():
-    """test if mural.png file is produced"""
+    """test if mural.ps file is produced"""
     check50.run("python3 timmy.py").exit(0)
-    check50.exists("mural.png")
+    check50.exists("mural.ps")
 
 @check50.check(exists)
 def testif():
