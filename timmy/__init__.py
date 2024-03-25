@@ -18,11 +18,11 @@ def test_mural_exists():
 def testif():
     """check for at least one if statement"""
     with open("timmy.py") as source:
-       tree = ast.parse(source.read())
+        tree = ast.parse(source.read())
         analyzer = Analyzer()
         analyzer.visit(tree)
-      if not analyzer.has_if():
-        raise check50.Failure("no for loop found")
+        if not analyzer.has_if():
+            raise check50.Failure("no for loop found")
 
 class Analyzer(ast.NodeVisitor):
     def __init__(self):
