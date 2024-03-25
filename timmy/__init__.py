@@ -70,7 +70,8 @@ class Analyzer(ast.NodeVisitor):
          case _:
                self.stats['call'].append(node)
       self.generic_visit(node)
-       def has_for(self):
+        
+    def has_for(self):
         return len(self.stats['for']) > 0
     
     def has_while(self):
