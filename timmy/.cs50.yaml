@@ -2,9 +2,9 @@ submit50:
   files: &submit50_files
     - !exclude "*"
     - !include "*.py"
-    - !include "*.png"
+    - !include "*.ps"
     - !require timmy.py
-    - !require mural.png
+    - !require mural.ps
 
 check50:
   files: *submit50_files
