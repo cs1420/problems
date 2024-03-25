@@ -2,7 +2,6 @@ import check50
 
 import ast
 from collections import defaultdict
-import argparse
 
 @check50.check()
 def exists():
@@ -22,42 +21,8 @@ def testif():
        tree = ast.parse(source.read())
         analyzer = Analyzer()
         analyzer.visit(tree)
-      if not analyzer.has_for():
+      if not analyzer.has_if():
         raise check50.Failure("no for loop found")
-
-@check50.check(exists)
-def test1():
-    """handles a height of 1 correctly"""
-    out = check50.run("python3 mario.py").stdin("1").stdout()
-    check_pyramid(out, open("1.txt").read())
-
-@check50.check(exists)
-def test2():
-    """handles a height of 2 correctly"""
-    out = check50.run("python3 mario.py").stdin("2").stdout()
-    check_pyramid(out, open("2.txt").read())
-
-@check50.check(exists)
-def test23():
-    """handles a height of 8 correctly"""
-    out = check50.run("python3 mario.py").stdin("8").stdout()
-    check_pyramid(out, open("8.txt").read())
-
-@check50.check(exists)
-def test24():
-    """rejects a height of 9, and then accepts a height of 2"""
-    (check50.run("python3 mario.py").stdin("9").reject()
-            .stdin("2").stdout(open("2.txt")).exit(0))
-
-@check50.check(exists)
-def test_reject_foo():
-    """rejects a non-numeric height of "foo" """
-    check50.run("python3 mario.py").stdin("foo").reject()
-
-@check50.check(exists)
-def test_reject_empty():
-    """rejects a non-numeric height of "" """
-    check50.run("python3 mario.py").stdin("").reject()
 
 class Analyzer(ast.NodeVisitor):
     def __init__(self):
@@ -119,38 +84,3 @@ class Analyzer(ast.NodeVisitor):
     
     def has_call(self):
         return len(self.stats['call']) >= 3
-    
-    def check_expect(self, target:str):
-        match target:
-            case 'for':
-                if self.has_for():
-                    return "for loop found"
-            case 'while':
-                if self.has_while():
-                    return "while loop found"
-            case 'if':
-                if self.has_if():
-                    return "if statement found"
-            case 'def':
-                if self.has_func():
-                    return "at least 3 functions found"
-            case 'call':
-                if self.has_call():
-                    return "at least 3 function calls to your different functions found"
-            case _:
-                return "check for {target} invalid."
-def check_pyramid(output, correct):
-    if output == correct:
-        return
-
-    output = [line for line in output.splitlines() if line != ""]
-    correct = correct.splitlines()
-
-    help = None
-    if len(output) == len(correct):
-        if all(ol.rstrip() == cl for ol, cl in zip(output, correct)):
-            help = "Did you add too much trailing whitespace to the end of your pyramid?"
-        elif all(ol[1:] == cl for ol, cl in zip(output, correct)):
-            help = "Are you printing an additional character at the beginning of each line?"
-
-    raise check50.Mismatch(correct, output, help=help)
