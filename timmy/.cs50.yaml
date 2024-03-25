@@ -1,0 +1,10 @@
+submit50:
+  files: &submit50_files
+    - !exclude "*"
+    - !include "*.py"
+    - !include "*.png"
+    - !require timmy.py
+    - !require mural.png
+
+check50:
+  files: *submit50_files
