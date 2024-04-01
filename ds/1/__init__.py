@@ -130,8 +130,8 @@ def test_sundae_default():
   help_msgs = (
    r"name should be empty.",
     r"scoop count should be 0.",
-    r"price per scoop should be 0."
-    r"topping name should be empty."
+    r"price per scoop should be 0.",
+    r"topping name should be empty.",
     r"topping price should be 0."
   )
   check_expect(zip(expected_values,values,help_msgs))
@@ -144,12 +144,12 @@ def test_sundae_nominal():
   help_msgs = (
    r"name should not be empty.",
     r"scoop count should be 0.",
-    r"price per scoop should be 0."
-    r"topping name should not be empty."
+    r"price per scoop should be 0.",
+    r"topping name should not be empty.",
     r"topping price should not be 0."
   )
   check_expect(zip(expected_values,values,help_msgs))
-...
+	
 @check50.check(exists)
 def test_sundae_modify():
   sundae = Sundae()
@@ -161,12 +161,12 @@ def test_sundae_modify():
   help_msgs = (
    r"name should not be empty.",
     r"scoop count should be 0.",
-    r"price per scoop should be 0."
-    r"topping name should not be empty."
-    r"topping price should not be 0."
+    r"price per scoop should be 0.",
+    r"topping name should not be empty.",
+    r"topping price should not be 0.",
   )
   check_expect(zip(expected_values,values,help_msgs))
-'''
+
 def check_expect(targets):
   for expected, actual, help in targets:
     if not match(expected, actual): 
