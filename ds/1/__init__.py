@@ -8,6 +8,7 @@ def exists():
 
 @check50.check(exists)
 def test_candy_default():
+  from desserts import Candy
   candy = Candy()
   values = (candy.name, candy.weight, candy.price_per_pound)
   expected_values = ("",0,0)
@@ -20,6 +21,7 @@ def test_candy_default():
                
 @check50.check(exists)
 def test_candy_nominal():
+  from desserts import Candy
   candy = Candy("peanut brittle", 3, 12.00)
   values = (candy.name, candy.weight, candy.price_per_pound)
   expected_values = ("peanut brittle", 3, 12.00)
@@ -32,6 +34,7 @@ def test_candy_nominal():
 
 @check50.check(exists)
 def test_candy_modify():
+  from desserts import Candy
   candy = Candy()
   candy.name = "peanut brittle"
   candy.weight = 3.0
@@ -47,6 +50,7 @@ def test_candy_modify():
 
 @check50.check(exists)
 def test_cookie_default():
+  from desserts import Cookie
   cookie = Cookie()
   values = (cookie.name, cookie.quantity, cookie.price_per_dozen)
   expected_values = ("",0,0)
@@ -59,6 +63,7 @@ def test_cookie_default():
 
 @check50.check(exists)
 def test_cookie_nominal():
+  from desserts import Cookie
   cookie = Cookie("mini dounut", 12.0, 5.00)
   values = (cookie.name, cookie.quantity, cookie.price_per_dozen)
   expected_values = ("mini dounut", 12.0, 5.00)
@@ -71,6 +76,7 @@ def test_cookie_nominal():
 	
 @check50.check(exists)
 def test_cookie_modify():
+  from desserts import Cookie
   cookie = Cookie()
   cookie.name = "mini dounut"
   cookie.quantity = 12.0
@@ -86,6 +92,7 @@ def test_cookie_modify():
 
 @check50.check(exists)
 def test_ice_cream_default():
+  from desserts import IceCream
   ice_cream = IceCream()
   values = (ice_cream.name,ice_cream.scoop_count, ice_cream.price_per_scoop)
   expected_values = ("", 0, 0)
@@ -98,6 +105,7 @@ def test_ice_cream_default():
 
 @check50.check(exists)
 def test_ice_cream_nominal():
+  from desserts import IceCream
   ice_cream = IceCream("moose tracks", 2, 1.30)
   values = (ice_cream.name,ice_cream.scoop_count, ice_cream.price_per_scoop)
   expected_values = ("moose tracks", 2, 1.30)
@@ -110,6 +118,7 @@ def test_ice_cream_nominal():
 
 @check50.check(exists)
 def test_ice_cream_modify():
+  from desserts import IceCream
   ice_cream = IceCream()
   ice_cream.name = "moose tracks"
   ice_cream.scoop_count = 2 
@@ -124,6 +133,7 @@ def test_ice_cream_modify():
   check_expect(zip(expected_values,values,help_msgs))
 @check50.check(exists)
 def test_sundae_default():
+  from desserts import Sundae
   sundae = Sundae()
   values = (sundae.name,sundae.scoop_count, sundae.price_per_scoop, sundae.topping_name, sundae.topping_price)
   expected_values = ("", 0,0,"",0)
@@ -138,6 +148,7 @@ def test_sundae_default():
 
 @check50.check(exists)
 def test_sundae_nominal():
+  from desserts import Sundae	
   sundae = Sundae("banana split", "chocolate", 1.50)
   values = (sundae.name,sundae.scoop_count, sundae.price_per_scoop, sundae.topping_name, sundae.topping_price)
   expected_values = ("banana split", 0, 0, "chocolate", 1.50)
@@ -152,6 +163,7 @@ def test_sundae_nominal():
 	
 @check50.check(exists)
 def test_sundae_modify():
+  from desserts import Sundae
   sundae = Sundae()
   sundae.name = "banana split"
   sundae.topping_name = "chocolate"
