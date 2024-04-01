@@ -47,7 +47,7 @@ def test_candy_modify():
 
 @check50.check(exists)
 def test_cookie_default():
-	cookie = Cookie()
+  cookie = Cookie()
   values = (cookie.name, cookie.quantity, cookie.price_per_dozen)
   expected_values = ("",0,0)
   help_msgs = (
@@ -59,7 +59,7 @@ def test_cookie_default():
 
 @check50.check(exists)
 def test_cookie_nominal():
-	cookie = Cookie("mini dounut", 12.0, 5.00)
+  cookie = Cookie("mini dounut", 12.0, 5.00)
   values = (cookie.name, cookie.quantity, cookie.price_per_dozen)
   expected_values = ("mini dounut", 12.0, 5.00)
   help_msgs = (
