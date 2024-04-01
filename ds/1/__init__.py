@@ -20,7 +20,7 @@ def test_candy_default():
                
 @check50.check(exists)
 def test_candy_nominal():
-	candy = Candy("peanut brittle", 3, 12.00)
+  candy = Candy("peanut brittle", 3, 12.00)
   values = (candy.name, candy.weight, candy.price_per_pound)
   expected_values = ("peanut brittle", 3, 12.00)
   help_msgs = (
@@ -32,10 +32,10 @@ def test_candy_nominal():
 
 @check50.check(exists)
 def test_candy_modify():
-	candy = Candy()
-	candy.name = "peanut brittle"
-	candy.weight = 3.0
-	candy.price_per_pound = 12.00
+  candy = Candy()
+  candy.name = "peanut brittle"
+  candy.weight = 3.0
+  candy.price_per_pound = 12.00
   values = (candy.name, candy.weight, candy.price_per_pound)
   expected_values = ("peanut brittle", 3, 12.00)
   help_msgs = (
@@ -86,7 +86,7 @@ def test_cookie_modify():
 
 @check50.check(exists)
 def test_ice_cream_default():
-	ice_cream = IceCream()
+  ice_cream = IceCream()
   values = (ice_cream.name,ice_cream.scoop_count, ice_cream.price_per_scoop)
   expected_values = ("", 0, 0)
   help_msgs = (
@@ -98,7 +98,7 @@ def test_ice_cream_default():
 
 @check50.check(exists)
 def test_ice_cream_nominal():
-	ice_cream = IceCream("moose tracks", 2, 1.30)
+  ice_cream = IceCream("moose tracks", 2, 1.30)
   values = (ice_cream.name,ice_cream.scoop_count, ice_cream.price_per_scoop)
   expected_values = ("moose tracks", 2, 1.30)
   help_msgs = (
@@ -110,7 +110,7 @@ def test_ice_cream_nominal():
 
 @check50.check(exists)
 def test_ice_cream_modify():
-	ice_cream = IceCream()
+  ice_cream = IceCream()
   ice_cream.name = "moose tracks"
   ice_cream.scoop_count = 2 
   ice_cream.price_per_scopp = 1.30
@@ -124,7 +124,7 @@ def test_ice_cream_modify():
   check_expect(zip(expected_values,values,help_msgs))
 @check50.check(exists)
 def test_sundae_default():
-	sundae = Sundae()
+  sundae = Sundae()
   values = (sundae.name,sundae.scoop_count, sundae.price_per_scoop, sundae.topping_name, sundae.topping_price)
   expected_values = ("", 0,0,"",0)
   help_msgs = (
@@ -138,8 +138,8 @@ def test_sundae_default():
 
 @check50.check(exists)
 def test_sundae_nominal():
-	sundae = Sundae("banana split", "chocolate", 1.50)
-	values = (sundae.name,sundae.scoop_count, sundae.price_per_scoop, sundae.topping_name, sundae.topping_price)
+  sundae = Sundae("banana split", "chocolate", 1.50)
+  values = (sundae.name,sundae.scoop_count, sundae.price_per_scoop, sundae.topping_name, sundae.topping_price)
   expected_values = ("banana split", 0, 0, "chocolate", 1.50)
   help_msgs = (
    r"name should not be empty.",
@@ -152,10 +152,10 @@ def test_sundae_nominal():
 
 @check50.check(exists)
 def test_sundae_modify():
-	sundae = Sundae()
-	sundae.name = "banana split"
-	sundae.topping_name = "chocolate"
-	sundae.topping_price = 1.50
+  sundae = Sundae()
+  sundae.name = "banana split"
+  sundae.topping_name = "chocolate"
+  sundae.topping_price = 1.50
   values = (sundae.name,sundae.scoop_count, sundae.price_per_scoop, sundae.topping_name, sundae.topping_price)
   expected_values = ("banana split", 0, 0, "chocolate", 1.50)
   help_msgs = (
