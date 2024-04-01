@@ -1,5 +1,5 @@
 import check50
-
+from desserts import Candy
 @check50.check()
 def exists():
     """Dessert Shop 1 files exist."""
