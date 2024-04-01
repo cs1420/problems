@@ -8,7 +8,7 @@ def exists():
 
 @check50.check(exists)
 def test_candy_default():
-	candy = Candy()
+  candy = Candy()
   values = (candy.name, candy.weight, candy.price_per_pound)
   expected_values = ("",0,0)
   help_msgs = (
