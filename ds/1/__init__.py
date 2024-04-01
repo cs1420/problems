@@ -166,7 +166,7 @@ def test_sundae_modify():
     r"topping price should not be 0."
   )
   check_expect(zip(expected_values,values,help_msgs))
-  '''
+'''
 def check_expect(targets):
   for expected, actual, help in targets:
     if not match(expected, actual): 
