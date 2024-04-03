@@ -17,7 +17,7 @@ def student_test():
 def setup(self):
    """Setup"""
    # Replace the student's test file with your own
-   self.add("staff_test_desserts.py")
+   add("staff_test_desserts.py")
 
 @check50.check(setup)
 def test_candy_default():
