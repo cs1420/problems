@@ -24,7 +24,7 @@ def setup(self):
 @check50.check(setup)
 def test_candy_default():
 	"""Test Candy default constructor."""
-	out = check50.run("pytest staff_test_desserts.py::test_candy_default").stdout()
+	out = check50.run("pytest test_desserts.py::test_candy_default").stdout()
 	check_expect(out,1)
 	
 @check50.check(setup)
