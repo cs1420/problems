@@ -11,7 +11,7 @@ def exists():
 def test_candy_default():
     out = check50.run("pytest test_desserts.py").stdout()
     pattern = r"(collected \d+ items|\d+ passed)"
-    matches = re.findall(pattern, output)
+    matches = re.findall(pattern, out)
     
     if "collected 12 items" not in matches:
         raise check50.Failure(f"Expected 'collected 12 items' in output, but not found.")
