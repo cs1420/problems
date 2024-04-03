@@ -8,7 +8,7 @@ def exists():
 
 @check50.check(exists)
 def test_candy_default():
-   pass
+   out = check50.run("pytest test_desserts.py").stdout()
 
 def check_expect(targets):
   for expected, actual, help in targets:
