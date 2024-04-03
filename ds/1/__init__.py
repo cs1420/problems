@@ -15,13 +15,13 @@ def student_test():
 
 @check50.check(student_test)
 def setup(self):
-"""Setup"""
-# Replace the student's test file with your own
-    self.add("staff_test_desserts.py")
+   """Setup"""
+   # Replace the student's test file with your own
+   self.add("staff_test_desserts.py")
 
 @check50.check(setup)
 def test_candy_default():
-"""Test Candy default constructor."""
+   """Test Candy default constructor."""
 	out = check50.run("pytest staff_test_desserts.py::test_candy_default").stdout()
 	check_expect(out,1)
 	
