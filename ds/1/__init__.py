@@ -18,7 +18,7 @@ def student_test():
 def setup(self):
    """Setup"""
    # Replace the student's test file with your own
-   check50.include("./staff_test_desserts.py")
+   #check50.include("./staff_test_desserts.py")
    #check50.py.append_code("test_desserts.py", "./staff_test_desserts.py")
 
 @check50.check(setup)
