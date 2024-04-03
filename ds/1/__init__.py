@@ -8,8 +8,16 @@ def exists():
 
 @check50.check(exists)
 def test_candy_default():
-   out = check50.run("pytest test_desserts.py").stdout()
-
+    out = check50.run("pytest test_desserts.py").stdout()
+    pattern = r"(collected \d+ items|\d+ passed)"
+    matches = re.findall(pattern, output)
+    
+    if "collected 12 items" not in matches:
+    raise check50.Failure(f"Expected 'collected 12 items' in output, but not found.")
+    
+    if "12 passed" not in matches:
+    raise check50.Failure(f"Expected '12 passed' in output, but not found.")
+    
 def check_expect(targets):
   for expected, actual, help in targets:
     if not match(expected, actual): 
