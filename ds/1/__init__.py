@@ -99,7 +99,7 @@ def check_expect(out, count):
 	matches = re.findall(pattern, out)
     
 	if f"collected {count} items" not in matches:
-		raise check50.Failure(f"Expected 'collected {count} items' in output, but not found.")
+		raise check50.Failure(f"Expected 'collected {count} items' in output, but {matches} found.")
     
 	if f"{count} passed" not in matches:
 		raise check50.Failure(f"Expected '{count} passed' in output, but not found.")
