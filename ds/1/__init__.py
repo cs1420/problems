@@ -13,10 +13,10 @@ def test_candy_default():
     matches = re.findall(pattern, output)
     
     if "collected 12 items" not in matches:
-    raise check50.Failure(f"Expected 'collected 12 items' in output, but not found.")
+        raise check50.Failure(f"Expected 'collected 12 items' in output, but not found.")
     
     if "12 passed" not in matches:
-    raise check50.Failure(f"Expected '12 passed' in output, but not found.")
+        raise check50.Failure(f"Expected '12 passed' in output, but not found.")
     
 def check_expect(targets):
   for expected, actual, help in targets:
