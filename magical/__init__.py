@@ -11,12 +11,14 @@ def test_reject_negative():
     """rejects a negative population percent"""
     status = check50.run("python3 simulation.py -0.5 2.5 20 output.txt").exit()
     if status == 0:
-        raise check50.Failure(f"expected to reject input")
+        raise check50.Failure(f"expected to reject negative population")
 
 @check50.check(exists)
 def test_pop_0():
     """rejects a population percent of 0"""
-    check50.run("python3 simulation.py 0 2.5 20 output.txt").reject()
+    status = check50.run("python3 simulation.py 0 2.5 20 output.txt").exit()
+    if status == 0:
+        raise check50.Failure(f"expected to reject 0 population")
 
 @check50.check(exists)
 def test_nominal_1():
