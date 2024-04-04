@@ -1,18 +1,68 @@
-from check50 import *
+import check50
 
-class Magical(Checks):
+@check50.check()
+def exists():
+    """simulation.py exists."""
+    check50.exists("simulation.py")
+    check50.include("1.txt")
 
-    @check()
-    def exists(self):
-        """simulation.py exists"""
-        self.require("magical/simulation.py")
+@check50.check(exists)
+def test_reject_negative():
+    """rejects a height of -1"""
+    check50.run("python3 mario.py").stdin("-1").reject()
 
-    @check("exists")
-    def compiles(self):
-        """simulation.py compiles"""
-        self.spawn("python3 -m py_compile magical/simulation.py")
+@check50.check(exists)
+def test0():
+    """rejects a height of 0"""
+    check50.run("python3 mario.py").stdin("0").reject()
 
-    @check("compiles")
-    def correct(self):
-        """Check that simulation.py produces correct output"""
-        self.spawn("python3 magical/simulation.py 0.1 2.5 20 output.txt").stdout("0\t0.100\n1\t0.225\n2\t0.436\n3\t0.615\n4\t0.592\n5\t0.604\n6\t0.598\n7\t0.601\n8\t0.600\n9\t0.600\n10\t0.600\n11\t0.600\n12\t0.600\n13\t0.600\n14\t0.600\n15\t0.600\n16\t0.600\n17\t0.600\n18\t0.600\n19\t0.600\n20\t0.600\n", "0\t0.100\n1\t0.225\n2\t0.436\n3\t0.615\n4\t0.592\n5\t0.604\n6\t0.598\n7\t0.601\n8\t0.600\n9\t0.600\n10\t0.600\n11\t0.600\n12\t0.600\n13\t0.600\n14\t0.600\n15\t0.600\n16\t0.600\n17\t0.600\n18\t0.600\n19\t0.600\n20\t0.600\n")
+@check50.check(exists)
+def test1():
+    """handles a height of 1 correctly"""
+    out = check50.run("python3 mario.py").stdin("1").stdout()
+    check_pyramid(out, open("1.txt").read())
+
+@check50.check(exists)
+def test2():
+    """handles a height of 2 correctly"""
+    out = check50.run("python3 mario.py").stdin("2").stdout()
+    check_pyramid(out, open("2.txt").read())
+
+@check50.check(exists)
+def test23():
+    """handles a height of 8 correctly"""
+    out = check50.run("python3 mario.py").stdin("8").stdout()
+    check_pyramid(out, open("8.txt").read())
+
+@check50.check(exists)
+def test24():
+    """rejects a height of 9, and then accepts a height of 2"""
+    (check50.run("python3 mario.py").stdin("9").reject()
+            .stdin("2").stdout(open("2.txt")).exit(0))
+
+@check50.check(exists)
+def test_reject_foo():
+    """rejects a non-numeric height of "foo" """
+    check50.run("python3 mario.py").stdin("foo").reject()
+
+@check50.check(exists)
+def test_reject_empty():
+    """rejects a non-numeric height of "" """
+    check50.run("python3 mario.py").stdin("").reject()
+
+
+def check_pyramid(output, correct):
+    if output == correct:
+        return
+
+    output = [line for line in output.splitlines() if line != ""]
+    correct = correct.splitlines()
+
+    help = None
+    if len(output) == len(correct):
+        if all(ol.rstrip() == cl for ol, cl in zip(output, correct)):
+            help = "Did you add too much trailing whitespace to the end of your pyramid?"
+        elif all(ol[1:] == cl for ol, cl in zip(output, correct)):
+            help = "Are you printing an additional character at the beginning of each line?"
+
+    raise check50.Mismatch(correct, output, help=help)
