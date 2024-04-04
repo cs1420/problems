@@ -50,7 +50,7 @@ def test_non_numeric_rate():
 @check50.check(exists)
 def test_reject_negative_rate():
     """rejects a negative rate"""
-       status = check50.run("python3 simulation.py 0 -1 20 output.txt").exit()
+    status = check50.run("python3 simulation.py 0 -1 20 output.txt").exit()
     if status == 0:
         raise check50.Failure(f"expected to reject non-numeric rate")
 
