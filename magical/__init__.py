@@ -43,29 +43,41 @@ def test_nominal_2():
 @check50.check(exists)
 def test_non_numeric_rate():
     """reject non-numeric rate"""
-    check50.run("python3 simulation.py 0.1 pippy 20 output.txt").reject()
+    status = check50.run("python3 simulation.py 0 pippy 20 output.txt").exit()
+    if status == 0:
+        raise check50.Failure(f"expected to reject non-numeric rate")
 
 @check50.check(exists)
 def test_reject_negative_rate():
     """rejects a negative rate"""
-    check50.run("python3 simulation.py 0.1 -1 20 output.txt").reject()
+       status = check50.run("python3 simulation.py 0 -1 20 output.txt").exit()
+    if status == 0:
+        raise check50.Failure(f"expected to reject non-numeric rate")
 
 @check50.check(exists)
 def test_reject_large_rate():
     """rejects a rate > 4"""
-    check50.run("python3 simulation.py 0.1 5 20 output.txt").reject()
+    status = check50.run("python3 simulation.py 0 5 20 output.txt").exit()
+    if status == 0:
+        raise check50.Failure(f"expected to reject non-numeric rate")
     
 @check50.check(exists)
 def test_reject_empty():
     """rejects when no parameters given"""
-    check50.run("python3 simulation.py").reject()
+    status = check50.run("python3 simulation.py").exit()
+    if status == 0:
+        raise check50.Failure(f"expected to provide parameters")
 
 @check50.check(exists)
 def test_non_numeric_iterations():
     """reject non-numeric iteration value"""
-    check50.run("python3 simulation.py 0.1 2.5 pippy output.txt").reject()
+    status = check50.run("python3 simulation.py 0.1 2.5 pippy output.txt").exit()
+    if status == 0:
+        raise check50.Failure(f"expected to reject non-numeric iteration value")
 
 @check50.check(exists)
 def test_reject_negative_iterations():
     """rejects a negative rate"""
-    check50.run("python3 simulation.py 0.1 2.5 -1 output.txt").reject()
+    status = check50.run("python3 simulation.py 0.1 2.5 -1 output.txt").exit()
+    if status == 0:
+        raise check50.Failure(f"expected to reject non-positive iteration values")
