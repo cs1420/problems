@@ -4,7 +4,7 @@ import check50
 def exists():
     """simulation.py exists."""
     check50.exists("simulation.py")
-    check50.include("1.txt")
+    check50.include("1.txt","2.txt")
 
 @check50.check(exists)
 def test_reject_negative():
