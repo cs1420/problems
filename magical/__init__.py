@@ -9,7 +9,9 @@ def exists():
 @check50.check(exists)
 def test_reject_negative():
     """rejects a negative population percent"""
-    check50.run("python3 simulation.py -0.5 2.5 20 output.txt").reject()
+    status = check50.run("python3 simulation.py -0.5 2.5 20 output.txt").exit()
+    if status == 0:
+        raise check50.Failure(f"expected to reject input")
 
 @check50.check(exists)
 def test_pop_0():
