@@ -77,7 +77,7 @@ def test_non_numeric_iterations():
 
 @check50.check(exists)
 def test_reject_negative_iterations():
-    """rejects a negative rate"""
+    """rejects a negative iteration value"""
     status = check50.run("python3 simulation.py 0.1 2.5 -1 output.txt").exit()
     if status == 0:
         raise check50.Failure(f"expected to reject non-positive iteration values")
