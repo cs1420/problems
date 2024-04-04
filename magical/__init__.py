@@ -1,4 +1,4 @@
-import check50
+centimport check50
 
 @check50.check()
 def exists():
@@ -8,19 +8,23 @@ def exists():
 
 @check50.check(exists)
 def test_reject_negative():
-    """rejects a height of -1"""
-    check50.run("python3 mario.py").stdin("-1").reject()
+    """rejects a negative population percent"""
+    check50.run("python3 simulation.py -0.5 2.5 20 output.txt").reject()
 
 @check50.check(exists)
-def test0():
-    """rejects a height of 0"""
-    check50.run("python3 mario.py").stdin("0").reject()
+def test_pop_0():
+    """rejects a population percent of 0"""
+    check50.run("python3 simulation.py 0 2.5 20 output.txt").reject()
 
 @check50.check(exists)
-def test1():
-    """handles a height of 1 correctly"""
-    out = check50.run("python3 mario.py").stdin("1").stdout()
-    check_pyramid(out, open("1.txt").read())
+def test_nominal_1():
+    """handles nominal input values correctly"""
+    check50.run("python3 simulation.py 0 2.5 20 output.txt").exit(0)
+    check50.exists("output.txt")
+    actual = open("output.txt").read()
+    expected = open("1.txt").read()
+    if not actual == expected:
+        raise check50.Mismatch(expected, actual, help="Your output file does not match expected output.")
 
 @check50.check(exists)
 def test2():
