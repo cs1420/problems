@@ -1,0 +1,10 @@
+submit50:
+  files: &submit50_files
+    - !exclude "*"
+    - !include "*.py"
+    - !include "*.ps"
+    - !require doodle.py
+    - !require art.ps
+
+check50:
+  files: *submit50_files
