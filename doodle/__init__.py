@@ -7,25 +7,25 @@ from collections import defaultdict
 def exists():
     """doodle.py exists."""
     check50.exists("doodle.py")
-    check50.exists("art.ps")
+    check50.exists("art.png")
 
 @check50.check(exists)
 def test_art_exists():
-    """art.ps file is produced"""
-    check50.run("python3 doodle.py 1 art.ps").exit(0)
-    check50.exists("art.ps")
+    """art.png file is produced"""
+    check50.run("python3 doodle.py 1 art.png").exit(0)
+    check50.exists("art.png")
 
 @check50.check(exists)
 def test_reject_not_number():
     """reject 1st parameter number not {1,2,3}"""
-    status = check50.run("python3 doodle.py 4 art.ps").exit()
+    status = check50.run("python3 doodle.py 4 art.png").exit()
     if status == 0:
         raise check50.Failure(f"expected to reject number outside set {1,2,3}")
 
 @check50.check(exists)
 def test_reject_non_numeric():
     """reject 1st parameter is not a number"""
-    status = check50.run("python3 doodle.py abcd art.ps").exit()
+    status = check50.run("python3 doodle.py abcd art.png").exit()
     if status == 0:
         raise check50.Failure(f"expected to reject non numeric 1st parameter")
 
