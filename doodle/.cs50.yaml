@@ -4,7 +4,7 @@ submit50:
     - !include "*.py"
     - !include "*.ps"
     - !require doodle.py
-    - !require art.ps
+    - !require art.png
 
 check50:
   files: *submit50_files
