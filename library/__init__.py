@@ -1,4 +1,5 @@
 import check50
+import doctest
 
 @check50.check()
 def exists():
@@ -36,24 +37,45 @@ def test_nominal_3():
     expected = open("ref_WOO_book.txt").read()
     if not actual == expected:
         raise check50.Mismatch(expected, actual, help="Your output file does not match expected output.")
+
+@check50.check(exists)
+def test_nominal_4():
+    """handles 4th file correctly"""
+    check50.run("python3 library.py FMP.txt").exit(0)
+    check50.exists("FMP_book.txt")
+    actual = open("FMP_book.txt").read()
+    expected = open("ref_FMP_book.txt").read()
+    if not actual == expected:
+        raise check50.Mismatch(expected, actual, help="Your output file does not match expected output.")
+
+@check50.check(exists)
+def test_nominal_5():
+    """handles 5th file correctly"""
+    check50.run("python3 library.py PNP.txt").exit(0)
+    check50.exists("PNP_book.txt")
+    actual = open("PNP_book.txt").read()
+    expected = open("ref_PNP_book.txt").read()
+    if not actual == expected:
+        raise check50.Mismatch(expected, actual, help="Your output file does not match expected output.")
+
+@check50.check(exists)
+def test_nominal_6():
+    """handles 6th file correctly"""
+    check50.run("python3 library.py TSL.txt").exit(0)
+    check50.exists("TSL_book.txt")
+    actual = open("TSL_book.txt").read()
+    expected = open("ref_TSL_book.txt").read()
+    if not actual == expected:
+        raise check50.Mismatch(expected, actual, help="Your output file does not match expected output.")
     
 @check50.check(exists)
 def test_reject_empty():
     """rejects when no parameters given"""
-    status = check50.run("python3 simulation.py").exit()
+    status = check50.run("python3 library.py").exit()
     if status == 0:
-        raise check50.Failure(f"expected to provide parameters")
+        raise check50.Failure(f"missing input file name")
 
 @check50.check(exists)
-def test_non_numeric_iterations():
-    """reject non-numeric iteration value"""
-    status = check50.run("python3 simulation.py 0.1 2.5 pippy output.txt").exit()
-    if status == 0:
-        raise check50.Failure(f"expected to reject non-numeric iteration value")
-
-@check50.check(exists)
-def test_reject_negative_iterations():
-    """rejects a negative iteration value"""
-    status = check50.run("python3 simulation.py 0.1 2.5 -1 output.txt").exit()
-    if status == 0:
-        raise check50.Failure(f"expected to reject non-positive iteration values")
+def test_with_doctest():
+    """run doctest"""
+    check50.run("python3 -m doctest -v library.py").exit(0)
