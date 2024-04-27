@@ -2,8 +2,9 @@ submit50:
   files: &submit50_files
     - !exclude "*"
     - !include "*.py"
-    - !require yondu.py
+    - !include "*.ps"
+    - !require doodle.py
+    - !require art.png
 
 check50:
   files: *submit50_files
-      

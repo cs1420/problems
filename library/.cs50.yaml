@@ -2,8 +2,7 @@ submit50:
   files: &submit50_files
     - !exclude "*"
     - !include "*.py"
-    - !require yondu.py
+    - !require library.py
 
 check50:
   files: *submit50_files
-      
