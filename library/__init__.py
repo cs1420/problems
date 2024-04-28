@@ -72,7 +72,7 @@ def test_nominal_6():
 def test_reject_empty():
     """rejects when no parameters given"""
     status = check50.run("python3 library.py").exit()
-    if status != 0:
+    if status == 0:
         raise check50.Failure(f"missing input file name")
 
 @check50.check(exists)
