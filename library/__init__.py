@@ -6,7 +6,7 @@ def exists():
     """library.py exists."""
     check50.exists("library.py")
     check50.include("ALG.txt","FMP.txt","PNP.txt","TTL.txt","TSL.txt","WOO.txt")
-    check50.include("ref_ALG.txt","ref_FMP.txt","ref_PNP.txt","ref_TTL.txt","ref_TSL.txt","ref_WOO.txt")
+    check50.include("ref_ALG_book.txt","ref_FMP_book.txt","ref_PNP_book.txt","ref_TTL_book.txt","ref_TSL_book.txt","ref_WOO_book.txt")
     
 @check50.check(exists)
 def test_nominal_1():
