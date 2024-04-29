@@ -1,0 +1,12 @@
+submit50:
+  files: &submit50_files
+    - !exclude "*"
+    - !include "*.py"
+    - !include "*.txt"
+    - !include "*.csv"
+    - !require fact_check.py
+    - !require presidents.txt
+    - !require BLS_private.csv
+
+check50:
+  files: *submit50_files
